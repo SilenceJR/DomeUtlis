@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DomeUtlis</string>
+    <string name="search_text">搜一搜 : %1$s</string>
+</resources>
