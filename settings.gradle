@@ -1,1 +1,1 @@
-include ':app', ':checkappupdate'
+include ':app', ':checkappupdate', ':rxjavadome'

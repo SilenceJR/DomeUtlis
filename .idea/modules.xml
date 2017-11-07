@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/DomeUtlis.iml" filepath="$PROJECT_DIR$/DomeUtlis.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/checkappupdate/checkappupdate.iml" filepath="$PROJECT_DIR$/checkappupdate/checkappupdate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rxjavadome/rxjavadome.iml" filepath="$PROJECT_DIR$/rxjavadome/rxjavadome.iml" />
     </modules>
   </component>
 </project>
