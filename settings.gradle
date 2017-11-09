@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 include ':app', ':checkappupdate', ':rxjavadome'
+=======
+include ':app', ':checkappupdate', ':mvpdome', ':webrtcdome', ':WebRtc2Android', ':amapdome', ':materialdesigndome', ':qrcodescanlibrary', ':materialdesignbutton', ':duimycirclelibrary', ':duimypaydome', ':duimymoneylibrary', ':dmsdk', ':lib-zxing', ':simpleappdome', ':androidmvprxjavadome', ':rxhttpactivitylibrary', ':recyclerbasedemo'
+>>>>>>> 7768db505ce74dfe109debe0071868e0a14b4a04
