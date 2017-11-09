@@ -12,8 +12,10 @@ import com.silence.androidmvprxjavadome.BaseActivity;
  */
 public abstract class BaseMvpActivity<P extends BasePresenter, M extends BaseModel> extends BaseActivity implements IView{
 
-    protected P mPresenter;
-    protected M mModel;
+    public static final String TAG = BaseMvpActivity.class.getSimpleName();
+
+    public P mPresenter;
+    public M mModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

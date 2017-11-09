@@ -1,6 +1,6 @@
 package com.silence.androidmvprxjavadome.model;
 
-public class LoginModel {
+public class LoginVo {
 
     /**
      * randomStr : fb0-b195bdf7471a

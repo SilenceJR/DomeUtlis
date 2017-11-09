@@ -9,6 +9,8 @@ import android.view.View;
 
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
+import butterknife.ButterKnife;
+
 /**
  * @作者: PJ
  * @创建时间: 2017/11/7 / 10:42
@@ -25,6 +27,8 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(setLayoutId());
+
+        ButterKnife.inject(this);
 
         mContext = BaseActivity.this;
         mToolbar = (Toolbar) findViewById(R.id.toolbar);

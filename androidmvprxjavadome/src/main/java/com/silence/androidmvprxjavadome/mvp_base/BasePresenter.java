@@ -2,12 +2,14 @@ package com.silence.androidmvprxjavadome.mvp_base;
 
 import java.lang.ref.WeakReference;
 
+import io.reactivex.annotations.NonNull;
+
 /**
  * @作者: PJ
  * @创建时间: 2017/11/7 / 11:07
  * @描述: 这是一个 BasePresenter 类.
  */
-public class BasePresenter<M extends IModel, V extends IView> implements IPresenter {
+public abstract class BasePresenter<M extends IModel, V extends IView> implements IPresenter {
 
     /**
      * 使用弱引用是为了mViewRef 在需要被回收的时候被回收，不要Activity被关闭了他被强引用了得不到回收内存泄漏
@@ -15,6 +17,7 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresen
      */
     private WeakReference<V> mViewRef;            // View接口类型的弱引用
     private WeakReference<M> mModelRef;           // 其实根本没有必要
+
 
     @Override
     public void attachModelAndView(IModel model, IView view) {
@@ -64,13 +67,14 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresen
 
     }
 
+    @NonNull
     @Override
-    public IView getIView() {
+    public V getIView() {
         return mViewRef.get();
     }
 
     @Override
-    public IModel getIModel() {
+    public M getIModel() {
         return mModelRef.get();
     }
 }

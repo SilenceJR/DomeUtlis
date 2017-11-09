@@ -23,7 +23,6 @@ public class LoginContract {
      *
      */
     public interface OauthPresenter {
-        void getRSAPublicKey();
-        void login(String cipher);    // Model层面拿回数据后通过回调通知Presenter 再通知View
+        void login(String phone, String password);// Model层面拿回数据后通过回调通知Presenter 再通知View
     }
 }

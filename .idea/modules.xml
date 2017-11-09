@@ -17,6 +17,8 @@
       <module fileurl="file://$PROJECT_DIR$/materialdesigndome/materialdesigndome.iml" filepath="$PROJECT_DIR$/materialdesigndome/materialdesigndome.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvpdome/mvpdome.iml" filepath="$PROJECT_DIR$/mvpdome/mvpdome.iml" />
       <module fileurl="file://$PROJECT_DIR$/qrcodescanlibrary/qrcodescanlibrary.iml" filepath="$PROJECT_DIR$/qrcodescanlibrary/qrcodescanlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recyclerbasedemo/recyclerbasedemo.iml" filepath="$PROJECT_DIR$/recyclerbasedemo/recyclerbasedemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rxhttpactivitylibrary/rxhttpactivitylibrary.iml" filepath="$PROJECT_DIR$/rxhttpactivitylibrary/rxhttpactivitylibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/simpleappdome/simpleappdome.iml" filepath="$PROJECT_DIR$/simpleappdome/simpleappdome.iml" />
       <module fileurl="file://$PROJECT_DIR$/webrtcdome/webrtcdome.iml" filepath="$PROJECT_DIR$/webrtcdome/webrtcdome.iml" />
     </modules>

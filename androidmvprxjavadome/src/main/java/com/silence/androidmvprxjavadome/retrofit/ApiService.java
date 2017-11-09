@@ -1,7 +1,7 @@
 package com.silence.androidmvprxjavadome.retrofit;
 
 import com.silence.androidmvprxjavadome.constant.DmConstant;
-import com.silence.androidmvprxjavadome.model.LoginModel;
+import com.silence.androidmvprxjavadome.model.LoginVo;
 import com.silence.androidmvprxjavadome.model.RespMsg;
 
 import java.security.spec.RSAPublicKeySpec;
@@ -24,7 +24,7 @@ public interface ApiService {
      * @return
      */
     @POST(DmConstant.DUIMY_LOGIN)
-    Observable<RespMsg<LoginModel>> login(@Query("cipher") String cipher);
+    Observable<RespMsg<LoginVo>> login(@Query("cipher") String cipher);
 
     /**
      * 获取公钥

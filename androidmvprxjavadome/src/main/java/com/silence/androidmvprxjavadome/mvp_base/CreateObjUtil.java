@@ -1,5 +1,9 @@
 package com.silence.androidmvprxjavadome.mvp_base;
 
+import android.util.Log;
+
+import com.silence.androidmvprxjavadome.BuildConfig;
+
 import java.lang.reflect.ParameterizedType;
 
 /**
@@ -18,9 +22,11 @@ public class CreateObjUtil {
      */
     public static <T> T getT(Object o, int i) {
         try {
+
             return ((Class<T>) ((ParameterizedType) (o.getClass().getGenericSuperclass())).getActualTypeArguments()[i]).newInstance();
         } catch (Exception e) {
             e.printStackTrace();
+            if (BuildConfig.DEBUG) Log.d("CreateObjUtil", e.getMessage());
         }
         return null;
     }
