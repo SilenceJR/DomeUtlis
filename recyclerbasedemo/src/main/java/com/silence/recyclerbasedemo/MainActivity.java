@@ -6,26 +6,32 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.silence.recyclerbasedemo.kotlin.Student_Kotlin;
+import com.silence.recyclerbasedemo.kotlin.Student_KotlinKt;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
+
 
 public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.RequestLoadMoreListener {
 
-    @InjectView(R.id.recycler)
+    @BindView(R.id.recycler)
     RecyclerView mRecycler;
-    @InjectView(R.id.swipe_refresh)
+    @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout mSwipeRefresh;
-    @InjectView(R.id.fab)
+    @BindView(R.id.fab)
     FloatingActionButton mFab;
 
     private boolean flag = true;
@@ -40,21 +46,32 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         initView();
         setStudentData(mStudents);
     }
 
     private void initData() {
+
+        setHeaderView();
+
         for (int i = 0; i < 30; i++) {
-            Student student = new Student("张三" + age, age);
+            Student student = new Student("张三" + age, null, age, Student.TEXT);
             mStudents.add(student);
             age++;
         }
         setStudentData(mStudents);
+
+        Student_Kotlin kotlin = new Student_Kotlin("李四", 19, Student_KotlinKt.getTEXT());
+        if (BuildConfig.DEBUG) Log.d("MainActivity", "kotlin:" + kotlin);
     }
 
+    private void setHeaderView() {
+        View view = LayoutInflater.from(this)
+                .inflate(R.layout.header_item_main, (ViewGroup) mRecycler.getParent(), false);
+        mAdapter.setHeaderView(view);
+    }
 
 
     private void initView() {
@@ -89,14 +106,34 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
 
     private void initRecycler() {
         mRecycler.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new MyAdatper(R.layout.item_main, mStudents);
-        mAdapter.setHeaderFooterEmpty(true ,true);
+        mAdapter = new MyAdatper(R.layout.item_main_text, mStudents);
+        mAdapter.setHeaderFooterEmpty(true, true);
         mAdapter.setEnableLoadMore(true);
         mAdapter.setOnLoadMoreListener(this, mRecycler);
-        View view = LayoutInflater.from(this)
-                .inflate(R.layout.header_item_main, (ViewGroup) mRecycler.getParent(), false);
-        mAdapter.setHeaderView(view);
+        mAdapter.openLoadAnimation();
+        mAdapter.isFirstOnly(false);
+        mAdapter.disableLoadMoreIfNotFullPage();
+
         mRecycler.setAdapter(mAdapter);
+
+        mAdapter.setOnItemChildClickListener(new BaseMultiItemQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                Toast.makeText(MainActivity.this, "adapter.getData().get(position):" + adapter.getData()
+                        .get(position), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mAdapter.setOnItemChildLongClickListener(new BaseQuickAdapter.OnItemChildLongClickListener() {
+            @Override
+            public boolean onItemChildLongClick(BaseQuickAdapter adapter, View view, int position) {
+                Toast.makeText(MainActivity.this, "adapter.getData().get(position):" + adapter.getData()
+                        .get(position), Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
+
 
     }
 
@@ -128,10 +165,14 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
             }
         } else {
             if (mAdapter.isLoading()) {
-                mAdapter.loadMoreFail();
+                if (flog) {
+                    mAdapter.loadMoreFail();
+                } else {
+                    mAdapter.loadMoreEnd();
+                }
+
             } else {
                 mAdapter.setEmptyView(mNoDataView);
-
                 if (mSwipeRefresh.isRefreshing()) {
                     mSwipeRefresh.setRefreshing(false);
                 }
@@ -143,18 +184,27 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
 
     }
 
+    boolean flog = true;
     @Override
     public void onLoadMoreRequested() {
-        initData2();
+        if (flog) {
+            initData2();
+            flog = false;
+        } else {
+            setStudentData(new ArrayList<Student>());
+        }
+
     }
 
     private void initData2() {
         mSwipeRefresh.setEnabled(false);
+        List<Student> students = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            Student student = new Student("李四" + age, age);
-            mStudents.add(student);
+            Student student = new Student(null, getResources().getDrawable(R.mipmap.ic_launcher), age, Student.IMAGE);
+            students.add(student);
             age++;
         }
-        setStudentData(mStudents);
+        setStudentData(students);
     }
+
 }
