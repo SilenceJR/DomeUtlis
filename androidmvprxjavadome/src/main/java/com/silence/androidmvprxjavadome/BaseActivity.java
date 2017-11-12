@@ -28,7 +28,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
 
         setContentView(setLayoutId());
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         mContext = BaseActivity.this;
         mToolbar = (Toolbar) findViewById(R.id.toolbar);

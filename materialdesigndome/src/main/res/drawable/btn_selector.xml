@@ -19,7 +19,7 @@
         </shape>
     </item>
 
-    <item android:drawable="#54303F9F" android:state_enabled="false"/>
+    <item android:drawable="@color/state_enabled" android:state_enabled="false"/>
     <item android:drawable="@color/colorAccent" android:state_enabled="true"/>
     <item android:drawable="@color/colorAccent">
         <shape>
