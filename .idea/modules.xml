@@ -4,21 +4,14 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DomeUtlis.iml" filepath="$PROJECT_DIR$/DomeUtlis.iml" />
       <module fileurl="file://$PROJECT_DIR$/WebRtc2Android/WebRtc2Android.iml" filepath="$PROJECT_DIR$/WebRtc2Android/WebRtc2Android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/amapdome/amapdome.iml" filepath="$PROJECT_DIR$/amapdome/amapdome.iml" />
       <module fileurl="file://$PROJECT_DIR$/androidmvprxjavadome/androidmvprxjavadome.iml" filepath="$PROJECT_DIR$/androidmvprxjavadome/androidmvprxjavadome.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/checkappupdate/checkappupdate.iml" filepath="$PROJECT_DIR$/checkappupdate/checkappupdate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cbcdemo/cbcdemo.iml" filepath="$PROJECT_DIR$/cbcdemo/cbcdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/dmsdk/dmsdk.iml" filepath="$PROJECT_DIR$/dmsdk/dmsdk.iml" />
-      <module fileurl="file://$PROJECT_DIR$/duimycirclelibrary/duimycirclelibrary.iml" filepath="$PROJECT_DIR$/duimycirclelibrary/duimycirclelibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gankiouilife/gankiouilife.iml" filepath="$PROJECT_DIR$/gankiouilife/gankiouilife.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib-zxing/lib-zxing.iml" filepath="$PROJECT_DIR$/lib-zxing/lib-zxing.iml" />
-      <module fileurl="file://$PROJECT_DIR$/materialdesigndome/materialdesigndome.iml" filepath="$PROJECT_DIR$/materialdesigndome/materialdesigndome.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mvpdome/mvpdome.iml" filepath="$PROJECT_DIR$/mvpdome/mvpdome.iml" />
-      <module fileurl="file://$PROJECT_DIR$/qrcodescanlibrary/qrcodescanlibrary.iml" filepath="$PROJECT_DIR$/qrcodescanlibrary/qrcodescanlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/recyclerbasedemo/recyclerbasedemo.iml" filepath="$PROJECT_DIR$/recyclerbasedemo/recyclerbasedemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/rxhttpactivitylibrary/rxhttpactivitylibrary.iml" filepath="$PROJECT_DIR$/rxhttpactivitylibrary/rxhttpactivitylibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rxjavadome/rxjavadome.iml" filepath="$PROJECT_DIR$/rxjavadome/rxjavadome.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rxjavalibrary/rxjavalibrary.iml" filepath="$PROJECT_DIR$/rxjavalibrary/rxjavalibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/simpleappdome/simpleappdome.iml" filepath="$PROJECT_DIR$/simpleappdome/simpleappdome.iml" />
       <module fileurl="file://$PROJECT_DIR$/webrtcdome/webrtcdome.iml" filepath="$PROJECT_DIR$/webrtcdome/webrtcdome.iml" />
     </modules>
   </component>

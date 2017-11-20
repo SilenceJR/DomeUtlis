@@ -1,1 +1,1 @@
-include ':app', ':checkappupdate', ':rxjavadome', ':mvpdome', ':webrtcdome', ':WebRtc2Android', ':amapdome', ':materialdesigndome', ':qrcodescanlibrary', ':duimycirclelibrary', ':dmsdk', ':lib-zxing', ':simpleappdome', ':androidmvprxjavadome', ':rxhttpactivitylibrary', ':recyclerbasedemo', ':rxjavalibrary'
+include ':app', ':webrtcdome', ':WebRtc2Android', ':dmsdk', ':lib-zxing', ':androidmvprxjavadome', ':rxhttpactivitylibrary', ':recyclerbasedemo', ':gankiouilife', ':cbcdemo'
