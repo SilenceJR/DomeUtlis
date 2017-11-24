@@ -7,7 +7,9 @@
       <module fileurl="file://$PROJECT_DIR$/androidmvprxjavadome/androidmvprxjavadome.iml" filepath="$PROJECT_DIR$/androidmvprxjavadome/androidmvprxjavadome.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/cbcdemo/cbcdemo.iml" filepath="$PROJECT_DIR$/cbcdemo/cbcdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dmmonerylibrary/dmmonerylibrary.iml" filepath="$PROJECT_DIR$/dmmonerylibrary/dmmonerylibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/dmsdk/dmsdk.iml" filepath="$PROJECT_DIR$/dmsdk/dmsdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dmuser/dmuser.iml" filepath="$PROJECT_DIR$/dmuser/dmuser.iml" />
       <module fileurl="file://$PROJECT_DIR$/gankiouilife/gankiouilife.iml" filepath="$PROJECT_DIR$/gankiouilife/gankiouilife.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib-zxing/lib-zxing.iml" filepath="$PROJECT_DIR$/lib-zxing/lib-zxing.iml" />
       <module fileurl="file://$PROJECT_DIR$/recyclerbasedemo/recyclerbasedemo.iml" filepath="$PROJECT_DIR$/recyclerbasedemo/recyclerbasedemo.iml" />

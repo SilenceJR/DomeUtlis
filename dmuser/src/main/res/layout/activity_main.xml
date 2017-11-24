@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.cbcdemo.MainActivity">
+    tools:context="com.example.dmuser.MainActivity">
 
 
     <android.support.design.widget.TextInputLayout
@@ -14,35 +14,34 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/et_monry"
+            android:id="@+id/et_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="订单金额"
-            >
-        </EditText>
+            android:hint="DuimyID"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_psw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="密码"
+            />
 
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_submit"
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="提交"
+        android:text="登陆"
         style="?attr/selectableItemBackground"
         />
-
-    <Button
-        android:id="@+id/btn_getdata"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="获取"
-        style="?attr/selectableItemBackground"
-        />
-
-    <TextView
-        android:id="@+id/tv_data"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
 
 </LinearLayout>

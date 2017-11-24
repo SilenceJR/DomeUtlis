@@ -1,1 +1,1 @@
-include ':app', ':webrtcdome', ':WebRtc2Android', ':dmsdk', ':lib-zxing', ':androidmvprxjavadome', ':rxhttpactivitylibrary', ':recyclerbasedemo', ':gankiouilife', ':cbcdemo'
+include ':app', ':webrtcdome', ':WebRtc2Android', ':dmsdk', ':lib-zxing', ':androidmvprxjavadome', ':rxhttpactivitylibrary', ':recyclerbasedemo', ':gankiouilife', ':cbcdemo', ':dmmonerylibrary', ':dmuser'
