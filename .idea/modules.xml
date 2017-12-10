@@ -14,6 +14,7 @@
       <module fileurl="file://$PROJECT_DIR$/lib-zxing/lib-zxing.iml" filepath="$PROJECT_DIR$/lib-zxing/lib-zxing.iml" />
       <module fileurl="file://$PROJECT_DIR$/recyclerbasedemo/recyclerbasedemo.iml" filepath="$PROJECT_DIR$/recyclerbasedemo/recyclerbasedemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/rxhttpactivitylibrary/rxhttpactivitylibrary.iml" filepath="$PROJECT_DIR$/rxhttpactivitylibrary/rxhttpactivitylibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tencentbugly/tencentbugly.iml" filepath="$PROJECT_DIR$/tencentbugly/tencentbugly.iml" />
       <module fileurl="file://$PROJECT_DIR$/webrtcdome/webrtcdome.iml" filepath="$PROJECT_DIR$/webrtcdome/webrtcdome.iml" />
     </modules>
   </component>
