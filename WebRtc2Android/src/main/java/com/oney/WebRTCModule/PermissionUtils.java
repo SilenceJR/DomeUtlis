@@ -42,9 +42,9 @@ public class PermissionUtils {
         if (context instanceof Activity) {
             return (Activity) context;
         }
-        if (context instanceof ReactContext) {
-            return ((ReactContext) context).getCurrentActivity();
-        }
+//        if (context instanceof ReactContext) {
+//            return ((ReactContext) context).getCurrentActivity();
+//        }
         return null;
     }
 

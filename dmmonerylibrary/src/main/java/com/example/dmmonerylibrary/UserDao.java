@@ -22,6 +22,9 @@ public interface UserDao {
     @Query("SELECT * FROM users WHERE USER_NAME = (:userNames)")
     List<User> loadAllByIds(String userNames);
 
+    @Query("SELECT * FROM users WHERE USER_NAME = (:userNames)")
+    User loadUser(String userNames);
+
     @Insert
     void insertAll(User user);
 

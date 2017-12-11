@@ -1,12 +1,13 @@
 package com.example.dmuser.room;
 
 import android.app.Application;
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Room;
 import android.os.Handler;
 import android.os.Looper;
 
 import com.example.dmuser.inter.BaseCallBack;
-import com.example.dmuser.inter.UserVodbCallBack;
+import com.example.dmuser.model.UserSimpleVo;
 import com.example.dmuser.model.UserVo;
 
 import java.util.List;
@@ -45,25 +46,23 @@ public class UserVodb {
         if (sApplication == null) {
             throw new RuntimeException("UserVodb需要进行初始化");
         }
+
+
+//        Migration migration = new Migration(1, 2) {
+//            @Override
+//            public void migrate(@NonNull SupportSQLiteDatabase database) {
+//            }
+//        };
+
         mUserVoDataBase = Room.databaseBuilder(sApplication, UserVoDataBase.class, "UserVo.db")
                 .build();
-    }
 
-    public void getAll(UserVodbCallBack callBack) {
-                mCachedThreadPool.execute(() -> {
-            List<UserVo> userVos = mUserVoDataBase.mUserVoDao().getAll();
-                    if (userVos == null ||userVos.size() == 0) {
-                        mHandler.post(() -> callBack.onError());
-                    } else {
-                        mHandler.post(() -> callBack.onSuccess(userVos));
-                    }
-        });
     }
 
     public void getAll(BaseCallBack<List<UserVo>> callBack) {
         mCachedThreadPool.execute(() -> {
             List<UserVo> userVos = mUserVoDataBase.mUserVoDao().getAll();
-            if (userVos == null ||userVos.size() == 0) {
+            if (userVos == null) {
                 mHandler.post(() -> callBack.onError());
             } else {
                 mHandler.post(() -> callBack.onSuccess(userVos));
@@ -82,53 +81,74 @@ public class UserVodb {
         });
     }
 
-    public void queryUserVo(String[] userNames, BaseCallBack<List<UserVo>> callBack) {
+    public void queryAllSimpleUser(BaseCallBack<LiveData<List<UserSimpleVo>>> callBack) {
         mCachedThreadPool.execute(() -> {
-            List<UserVo> userVos = mUserVoDataBase.mUserVoDao().queryUserVo(userNames);
-            if (userVos == null || userVos.size() == 0) {
+            LiveData<List<UserSimpleVo>> userSimpleVo = mUserVoDataBase.mUserVoDao()
+                    .queryAllUserSimpleVo();
+            if (userSimpleVo == null) {
                 mHandler.post(() -> callBack.onError());
             } else {
-                mHandler.post(() -> callBack.onSuccess(userVos));
+                mHandler.post(() -> callBack.onSuccess(userSimpleVo));
             }
         });
     }
 
-    public void saveUserVo(UserVo userVo) {
-        queryUserVo(userVo.getUserName(), new BaseCallBack<UserVo>() {
+    public void saveUserVo(UserVo user) {
+        queryUserVo(user.getUserName(), new BaseCallBack<UserVo>() {
             @Override
             public void onSuccess(UserVo userVo) {
-                mCachedThreadPool.execute(() -> mUserVoDataBase.mUserVoDao().updateUserVo(userVo));
+                mCachedThreadPool.execute(() -> mUserVoDataBase.mUserVoDao().updateUserVo(user));
             }
 
             @Override
             public void onError() {
-                mCachedThreadPool.execute(() -> mUserVoDataBase.mUserVoDao().insertUserVo(userVo));
+                mCachedThreadPool.execute(() -> mUserVoDataBase.mUserVoDao().insertUserVo(user));
             }
         });
 
     }
 
     public void saveUserVo(List<UserVo> userVos) {
-        String[] UserNames = new String[userVos.size()];
+
+        if (userVos.isEmpty()) {
+            return;
+        }
+
         for (int i = 0; i < userVos.size(); i++) {
-            UserNames[i] = userVos.get(i).getUserName();
+            saveUserVo(userVos.get(i));
         }
+    }
 
-        if (UserNames != null || UserNames.length != 0) {
-            queryUserVo(UserNames, new BaseCallBack<List<UserVo>>() {
-                @Override
-                public void onSuccess(List<UserVo> userVos) {
-                    mCachedThreadPool.execute(() -> mUserVoDataBase.mUserVoDao().updateUserVo(userVos));
-                }
-
-                @Override
-                public void onError() {
-                    mCachedThreadPool.execute(() -> mUserVoDataBase.mUserVoDao().insertUserVo(userVos));
-                }
-            });
+    public void deleteUserVo(Object userVoEntity) {
+        if (userVoEntity instanceof List) {
+            List<UserVo> entitys = (List<UserVo>) userVoEntity;
+            if (entitys.isEmpty()) {
+                return;
+            }
+            for (UserVo userVo : entitys) {
+                mCachedThreadPool.execute(() -> mUserVoDataBase.mUserVoDao().deleteUserVo(userVo));
+            }
+        } else if (userVoEntity instanceof UserVo) {
+            mCachedThreadPool.execute(() -> mUserVoDataBase.mUserVoDao()
+                    .deleteUserVo((UserVo) userVoEntity));
         }
+    }
 
+    public void deleteAllUserVo() {
+        getAll(new BaseCallBack<List<UserVo>>() {
+            @Override
+            public void onSuccess(List<UserVo> userVos) {
+                deleteUserVo(userVos);
+            }
 
+            @Override
+            public void onError() {
 
+            }
+        });
+    }
+
+    public UserVoDao getUserVoDao() {
+        return mUserVoDataBase.mUserVoDao();
     }
 }

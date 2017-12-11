@@ -1,6 +1,5 @@
 package com.example.cbcdemo;
 
-import android.arch.persistence.room.Room;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -10,12 +9,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.dmmonerylibrary.TestUserVo;
+import com.example.dmmonerylibrary.TestVoBase;
 import com.example.dmmonerylibrary.User;
 import com.example.dmmonerylibrary.UserDataBase;
+import com.example.dmmonerylibrary.UserVodb;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -76,20 +79,48 @@ public class MainActivity extends AppCompatActivity {
         //        }));
 
 
-        mDataBase = Room.databaseBuilder(getApplicationContext(), UserDataBase.class, "User.db")
-                .fallbackToDestructiveMigration()
-                .build();
-
-
-
-
-
         mGetData.setOnClickListener(v -> {
             new Thread(() -> {
-                for (User user : mDataBase.mUserDao().getAll()) {
-                    if (BuildConfig.DEBUG) Log.d("MainActivity", "user:" + user.toString());
+                try {
+                    for (User user : UserVodb.getInstance().getUserAll()) {
+                        if (BuildConfig.DEBUG) try {
+                            List<TestUserVo> testUserVos = UserVodb.getInstance()
+                                    .queryTestUserVos(user);
+                            if (testUserVos != null) {
+                                Log.d("MainActivity", "user:" + testUserVos
+                                        .toString());
+                            } else {
+                                if (BuildConfig.DEBUG) Log.d("MainActivity", "未找到用户数据");
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }).start();
+        });
+
+        mGetData.setOnClickListener(v -> {
+            if (BuildConfig.DEBUG)
+                try {
+                    Log.d("MainActivity", UserVodb.getInstance().queryAllTestBase().toString());
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+
+            try {
+                UserVodb.getInstance().deleteTestUserVoBase(UserVodb.getInstance().queryUserNameByTestBase("张7"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
 
@@ -97,26 +128,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
+                for (int i = 0; i < 10; i++) {
+                    TestVoBase testVoBase = new TestVoBase("张" + i, "1101" + i);
+                    TestUserVo testUserVo = new TestUserVo("李" + i, "李四" + i, "2111" + i, "1101" + i);
+                    UserVodb.getInstance().saveTestBase(testVoBase);
+                    UserVodb.getInstance().saveTestUser(testUserVo);
+                }
 
-                        User mUser = null;
-                        for (int i = 0; i < 10; i++) {
-                            mUser = new User("李四" + i, i);
-                            List<User> users = mDataBase.mUserDao()
-                                    .loadAllByIds(mUser.getUserName());
-                            if (users == null || users.size() == 0) {
-                                mDataBase.mUserDao().insertAll(mUser);
-                            } else {
-                                mDataBase.mUserDao().updateUser(mUser);
-                            }
 
-                        }
-                    }
-                }).start();
+//                User mUser = null;
+//                for (int i = 0; i < 10; i++) {
+//                    mUser = new User("李四" + i, i);
+//                    TestUserVo testUserVo = new TestUserVo("李四" + (i * 2), "王五" + i, "111" + i);
+//
+//                    UserVodb.getInstance().save(mUser, testUserVo);
+//
+//                }
 
-//                mMonry = mEditText.getText().toString().trim();
+                //                mMonry = mEditText.getText().toString().trim();
 //
 //                HttpCall.load(HttpCall.getInstance()
 //                        .getAPI()

@@ -23,6 +23,7 @@ public class User {
     @ColumnInfo(name = "USER_AGE")
     private int userAge;
 
+
     @Ignore
     public User() {
     }
@@ -56,25 +57,6 @@ public class User {
         this.userAge = userAge;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        if (userId != user.userId) return false;
-        if (userAge != user.userAge) return false;
-        return userName != null ? userName.equals(user.userName) : user.userName == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = userId;
-        result = 31 * result + (userName != null ? userName.hashCode() : 0);
-        result = 31 * result + userAge;
-        return result;
-    }
 
     @Override
     public String toString() {

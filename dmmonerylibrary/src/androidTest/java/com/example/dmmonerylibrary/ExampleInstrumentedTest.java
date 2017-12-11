@@ -4,15 +4,10 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.dmmonerylibrary.network.HttpCall;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -29,30 +24,4 @@ public class ExampleInstrumentedTest {
         assertEquals("com.example.dmmonerylibrary.test", appContext.getPackageName());
     }
 
-    @Test
-    public void onHttp() {
-        HttpCall.load(HttpCall.getInstance()
-                .getAPI()
-                .queryDmBaoBalance("100109"), new Observer<MoneryRespMsg<String>>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(MoneryRespMsg<String> stringMoneryRespMsg) {
-                System.out.println(stringMoneryRespMsg);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
-    }
 }

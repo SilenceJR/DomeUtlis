@@ -8,7 +8,9 @@ import android.arch.persistence.room.RoomDatabase;
  * @创建时间: 2017/11/23 / 18:11
  * @描述: 这是一个 UserDataBase 类.
  */
-@Database(entities = {User.class}, version = 3, exportSchema = false)
+@Database(entities = {User.class, TestUserVo.class, TestVoBase.class}, version = 3, exportSchema = false)
 public abstract class UserDataBase extends RoomDatabase{
     public abstract UserDao mUserDao();
+    public abstract TestUserVoDao mTestUserVoDao();
+    public abstract TestVoBaseDao mTestVoBaseDao();
 }

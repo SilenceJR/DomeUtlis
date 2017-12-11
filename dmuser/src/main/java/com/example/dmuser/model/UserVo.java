@@ -80,6 +80,7 @@ public class UserVo implements Serializable {
      * tb_user
      */
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
     private Long id;            // 用户ID
     @ColumnInfo(name = "_userName")
     private String userName;    // 用户名

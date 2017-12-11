@@ -25,21 +25,27 @@
         />
 
     <Button
+        android:id="@+id/btn_delete_firend"
         style="?attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="逐条删除好友"
         />
 
     <Button
+        android:id="@+id/btn_load_simple_user"
         style="?attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="加载简单的用户资料"
         />
 
     <Button
+        android:id="@+id/btn_alter_user"
         style="?attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="随便改点数据"
         />
 
     <Button
@@ -56,13 +62,33 @@
         android:text="文本清空"
         />
 
-    <TextView
-        android:id="@+id/tv_show_data"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="5dp"
-        android:textColor="@android:color/black"
-        tools:text="我的数据"
-        />
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/tv_show_data"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:textColor="@android:color/black"
+            android:text="UserVo:"
+            />
+
+        <TextView
+            android:id="@+id/tv_show_simple_data"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:textColor="@android:color/black"
+            tools:text="UserSimpleVo:"
+            />
+
+    </LinearLayout>
+
+
 
 </LinearLayout>
