@@ -15,7 +15,11 @@
       <module fileurl="file://$PROJECT_DIR$/lib-zxing/lib-zxing.iml" filepath="$PROJECT_DIR$/lib-zxing/lib-zxing.iml" />
       <module fileurl="file://$PROJECT_DIR$/recyclerbasedemo/recyclerbasedemo.iml" filepath="$PROJECT_DIR$/recyclerbasedemo/recyclerbasedemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/rxhttpactivitylibrary/rxhttpactivitylibrary.iml" filepath="$PROJECT_DIR$/rxhttpactivitylibrary/rxhttpactivitylibrary.iml" />
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/tokendemo/tokendemo.iml" filepath="$PROJECT_DIR$/tokendemo/tokendemo.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/tencentbugly/tencentbugly.iml" filepath="$PROJECT_DIR$/tencentbugly/tencentbugly.iml" />
+>>>>>>> cc6c86884e11c8cdc3a836fb1fcf2363825ceb02
       <module fileurl="file://$PROJECT_DIR$/webrtcdome/webrtcdome.iml" filepath="$PROJECT_DIR$/webrtcdome/webrtcdome.iml" />
     </modules>
   </component>
